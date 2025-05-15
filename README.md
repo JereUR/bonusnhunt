@@ -1,36 +1,7 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="left"># 🎰 Slot Performance Tracker<br><br>Aplicación web desarrollada con [Next.js](https://nextjs.org) y [Prisma](https://www.prisma.io), diseñada para mostrar estadísticas en tiempo real sobre el rendimiento en slots online.<br><br>## 🧠 ¿Qué hace esta app?<br><br>Esta herramienta permite a los usuarios llevar un control detallado de sus sesiones de juego en slots online, especialmente enfocado en la búsqueda de _bonus_. Su funcionamiento es el siguiente:<br><br>- El usuario registra cada slot en el que consigue un bonus, incluyendo el nombre del slot y la apuesta realizada.<br>- A medida que los va abriendo y registrando la ganancia obtenida, la app:<br>  - Calcula cuánto _x_ necesita obtener en promedio para recuperar el pozo inicial.<br>  - Muestra el _x_ promedio actual conseguido.<br>  - Proporciona un resumen visual y en tiempo real del progreso general.<br><br>Ideal para quienes practican la estrategia de guardar y abrir múltiples bonuses al mismo tiempo y quieren optimizar su rendimiento.<br><br>---<br><br>## 🚀 Tecnologías<br><br>- [Next.js](https://nextjs.org) – Framework React moderno con renderizado híbrido (SSR/SSG).<br>- [Prisma](https://www.prisma.io) – ORM para manejo de base de datos SQL.<br>- [TypeScript](https://www.typescriptlang.org) – Tipado estático para mayor robustez.<br>- [Tailwind CSS](https://tailwindcss.com) – Utilidades CSS para estilizado rápido.<br>- [PostgreSQL](https://www.postgresql.org) – Base de datos recomendada (configurable).<br>- [Vercel](https://vercel.com) – Plataforma de despliegue (opcional).<br><br>---<br><br>## 🛠️ Cómo empezar<br><br>Primero, instala las dependencias:<br><br>```bash<br>npm install<br># o<br>yarn<br># o<br>pnpm install<br>```<br><br>Luego, inicia el servidor de desarrollo:<br><br>```bash<br>npm run dev<br># o<br>yarn dev<br># o<br>pnpm dev<br># o<br>bun dev<br>```</p>
 
-## Getting Started
+###
 
-First, run the development server:
+<p align="left">Abre http://localhost:3000 en tu navegador para ver la app funcionando.<br><br>🧩 Configuración adicional<br>Crea un archivo .env basado en .env.example.<br><br>Agrega las siguientes variables de entorno necesarias para conectar tu base de datos y configurar el almacenamiento remoto. Estas no están incluidas por defecto.<br><br>🔗 Conexión a la base de datos (Neon)<br>Si usas Neon como base de datos:<br><br>plaintext<br>Copiar<br>Editar<br># Para conexiones directas sin PgBouncer<br>DATABASE_URL_UNPOOLED=postgresql://<usuario>:<contraseña>@<host>/<base_de_datos>?sslmode=require<br><br># Parámetros de conexión personalizados<br>PGHOST=<host_con_pooling><br>PGHOST_UNPOOLED=<host_sin_pooling><br>PGUSER=<usuario><br>PGDATABASE=<base_de_datos><br>PGPASSWORD=<contraseña><br><br># URLs generadas automáticamente por Neon o Vercel<br>POSTGRES_URL=postgres://<usuario>:<contraseña>@<host>/<base_de_datos>?sslmode=require<br>POSTGRES_URL_NON_POOLING=postgres://<usuario>:<contraseña>@<host_sin_pooling>/<base_de_datos>?sslmode=require<br>POSTGRES_USER=<usuario><br>POSTGRES_HOST=<host><br>POSTGRES_PASSWORD=<contraseña><br>POSTGRES_DATABASE=<base_de_datos><br>POSTGRES_URL_NO_SSL=postgres://<usuario>:<contraseña>@<host>/<base_de_datos><br>POSTGRES_PRISMA_URL=postgres://<usuario>:<contraseña>@<host>/<base_de_datos>?connect_timeout=15&sslmode=require<br>ℹ️ Puedes obtener estos datos desde tu dashboard de Neon al crear un nuevo proyecto y base de datos.<br>Asegúrate de habilitar SSL y usar el host pooler donde se requiera.<br><br>☁️ Almacenamiento remoto (Vercel Blob)<br>Para manejar almacenamiento de archivos en la nube con Vercel Blob:<br><br>plaintext<br>Copiar<br>Editar<br>BLOB_READ_WRITE_TOKEN=tu_token_de_vercel_blob<br>ℹ️ Puedes generar este token en tu panel de Vercel → Storage → Tokens.<br><br>📦 Migraciones con Prisma<br>Una vez configuradas las variables, ejecuta las migraciones de la base de datos:<br><br>shell<br>Copiar<br>Editar<br>npx prisma migrate dev<br>📚 Aprende más<br>Documentación de Next.js<br><br>Prisma ORM<br><br>Neon – Serverless Postgres<br><br>Vercel Blob<br><br>🚀 Deploy<br>El despliegue recomendado es en la plataforma de Vercel.<br>Consulta la guía oficial de despliegue de Next.js para más detalles.</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+###
