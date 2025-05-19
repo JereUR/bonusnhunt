@@ -1,15 +1,79 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearchPostgres"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(uuid())
+  username     String       @unique
+  displayName  String
+  email        String?      @unique
+  passwordHash String?
+  googleID     String?      @unique
+  avatarUrl    String?
+  bio          String?
+  sessions     Session[]
+  resetTokens  ResetToken[]
+  bonusRuns    BonusRun[]
+
+  createdAt DateTime @default(now())
+
+  @@map("users")
+}
+
+model ResetToken {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  token     String   @unique
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model BonusRun {
+  id             String      @id @default(uuid())
+  name           String      @default("Nueva sesión")
+  userId         String
+  initialBudget  Float
+  currentBalance Float
+  isActive       Boolean     @default(true)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  completedAt    DateTime?
+  bonusItems     BonusItem[]
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("bonus_runs")
+}
+
+model BonusItem {
+  id         String    @id @default(uuid())
+  slotName   String
+  bet        Float
+  win        Float?
+  multiplier Float?    @map("x_value")
+  isOpened   Boolean   @default(false)
+  notes      String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  openedAt   DateTime?
+  bonusRunId String
+  bonusRun   BonusRun  @relation(fields: [bonusRunId], references: [id], onDelete: Cascade)
+
+  @@map("bonus_items")
 }
